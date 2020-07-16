@@ -15,5 +15,5 @@ $(() => {
 
   $('#change-password').on('submit', scriptsEvents.onChangePassword)
 
-  // $('#sign-out').on('submit', scriptsEvents.onSignOut)
+  $('#sign-out').on('submit', scriptsEvents.onSignOut)
 })

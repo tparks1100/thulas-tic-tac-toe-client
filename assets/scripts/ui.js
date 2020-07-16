@@ -44,7 +44,7 @@ module.exports = {
   signInSuccess,
   signInFailure,
   changePasswordSuccess,
-  changePasswordFailure
-  // signOutSuccess,
-  // signOutFailure
+  changePasswordFailure,
+  signOutSuccess,
+  signOutFailure
 }
