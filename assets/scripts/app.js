@@ -10,4 +10,6 @@ const scriptsEvents = require('./events')
 
 $(() => {
   $('#sign-up').on('submit', scriptsEvents.onSignUp)
+
+  $('#sign-in').on('submit', scriptsEvents.onSignIn)
 })
