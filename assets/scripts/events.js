@@ -55,7 +55,7 @@ const onCreateGame = function (event) {
   const form = event.target
   const formData = getFormFields(form)
 
-  api.signOut(formData)
+  api.createGame(formData)
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
 }

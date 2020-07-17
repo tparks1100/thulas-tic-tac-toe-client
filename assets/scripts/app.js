@@ -6,7 +6,7 @@
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
-const scriptsEvents = require('./events')
+const scriptsEvents = require('./events') // object that we are exporting from this file
 
 $(() => {
   // Authentication Portion:

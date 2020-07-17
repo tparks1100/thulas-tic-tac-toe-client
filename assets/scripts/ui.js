@@ -43,8 +43,12 @@ const signOutFailure = function () {
   $('#message').text('Sign out failed.')
 }
 
-const createGameSuccess = function () {
+const createGameSuccess = function (response) {
   $('#message').text('New game has started! Choose your first space!')
+  console.log(response)
+  store.game = response.game
+  console.log('store: ', store)
+  console.log('token: ', store.user.token)
 }
 
 const createGameFailure = function () {
