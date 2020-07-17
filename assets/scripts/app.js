@@ -9,6 +9,7 @@
 const scriptsEvents = require('./events')
 
 $(() => {
+  // Authentication Portion:
   $('#sign-up').on('submit', scriptsEvents.onSignUp)
 
   $('#sign-in').on('submit', scriptsEvents.onSignIn)
@@ -16,4 +17,7 @@ $(() => {
   $('#change-password').on('submit', scriptsEvents.onChangePassword)
 
   $('#sign-out').on('submit', scriptsEvents.onSignOut)
+
+  // Game Portion:
+  $('#create-game').on('submit', scriptsEvents.onCreateGame)
 })
