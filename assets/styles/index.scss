@@ -1,1 +1,29 @@
 @import '~bootstrap/scss/bootstrap';
+h1 {
+  color: #ff9a76;
+  font-family: 'Ranchers', cursive;
+  font-size: 90px;
+  text-align: center;
+}
+
+.authenticated {
+  display: none;
+}
+
+button {
+  background-color: #6886c5;
+  color: white;
+}
+
+table {
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 100px;
+}
+
+td {
+border: 1px solid black;
+height: 200px;
+width: 200px;
+}

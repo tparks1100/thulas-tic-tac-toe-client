@@ -16,6 +16,9 @@ const signInSuccess = function (response) {
   store.user = response.user
   console.log('store: ', store)
   console.log('token: ', store.user.token)
+
+  $('.authenticated').show()
+  $('.unauthenticated').hide()
 }
 
 const signInFailure = function () {
@@ -32,6 +35,8 @@ const changePasswordFailure = function () {
 
 const signOutSuccess = function () {
   $('#message').text('Signed you out!')
+  $('.unauthenticated').show()
+  $('.authenticated').hide()
 }
 
 const signOutFailure = function () {
