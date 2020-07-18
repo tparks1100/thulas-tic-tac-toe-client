@@ -11,6 +11,8 @@ h1 {
   text-align: center;
 }
 
+
+
 div {
   padding: 30px;
 }
@@ -26,8 +28,8 @@ button {
 
 td {
   border: 3px solid black;
-  height: 150px;
-  width: 150px;
+  height: 140px;
+  width: 140px;
 }
 
 .container {
@@ -36,7 +38,7 @@ td {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 90px;
+  min-height: 100px;
 }
 
 * {

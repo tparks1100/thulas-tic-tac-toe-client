@@ -41,11 +41,11 @@ const signOut = function () {
   })
 }
 
-const createGame = function () {
+const createGame = function (formData) {
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
-    data: '{}',
+    data: formData,
     headers: {
       Authorization: 'Bearer ' + store.user.token
     }
