@@ -55,6 +55,15 @@ const createGameFailure = function () {
   $('#message').text('New game was not started. Try again!')
 }
 
+const updateGameSuccess = function (response) {
+  console.log('Updated')
+  store.game = response.game
+}
+
+const updateGameFailure = function () {
+  console.log('Not updated')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -65,5 +74,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   createGameSuccess,
-  createGameFailure
+  createGameFailure,
+  updateGameSuccess,
+  updateGameFailure
 }

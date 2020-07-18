@@ -52,10 +52,30 @@ const createGame = function (formData) {
   })
 }
 
+const updateGame = function (formData) {
+  return $.ajax({
+    headers: {
+      Authorization: 'Bearer ' + store.game.token
+    },
+    url: config.apiUrl + '/games/' + formData,
+    method: 'PATCH',
+    data: {
+      game: {
+        cell: {
+          index: 0,
+          value: 'x'
+        },
+        over: false
+      }
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
-  createGame
+  createGame,
+  updateGame
 }
