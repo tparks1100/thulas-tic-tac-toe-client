@@ -55,14 +55,14 @@ const createGameFailure = function () {
   $('#message').text('New game was not started. Try again!')
 }
 
-const updateGameSuccess = function (response) {
-  $('#next-player-message').text('Your X has been placed, now place O.')
-  $(store.clickedBox).text('x')
-}
-
-const updateGameFailure = function () {
-  $('#next-player-message').text('Space taken, choose a different space!')
-}
+// const updateGameSuccess = function (response) {
+//   $('#next-player-message').text('Player O')
+//   // $(store.clickedBox).text('X')
+// }
+//
+// const updateGameFailure = function () {
+//   $('#next-player-message').text('Space taken, choose a different space!')
+// }
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -73,7 +73,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   createGameSuccess,
-  createGameFailure,
-  updateGameSuccess,
-  updateGameFailure
+  createGameFailure
+  // updateGameSuccess,
+  // updateGameFailure
 }

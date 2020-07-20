@@ -55,29 +55,30 @@ const onCreateGame = function (event) {
 
   const form = event.target
   const formData = getFormFields(form)
+  store.player = 'X'
 
   api.createGame(formData)
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
 }
 
-// let isActive = true
-// let player = 'X'
+let turn = true
 
 const onUpdateGame = function (clickedCellEvent) {
   console.log(clickedCellEvent)
   const clickedCell = clickedCellEvent.target
   const index = $(clickedCell).data('cell-index')
   store.clickedBox = clickedCellEvent.target
-
-  const value = $(clickedCell).text('X')
-
   console.log(index)
-  console.log(value)
 
-  api.updateGame(index, value)
-    .then(ui.updateGameSuccess)
-    .catch(ui.updateGameFailure)
+  const player = turn ? 'X' : 'O'
+  if (clickedCellEvent.target.innerText === '') {
+    clickedCellEvent.target.innerText = player
+    api.updateGame(index, player, false)
+      .then()
+      .catch()
+    turn = !turn
+  }
 }
 
 module.exports = {
