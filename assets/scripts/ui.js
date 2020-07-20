@@ -56,14 +56,13 @@ const createGameFailure = function () {
 }
 
 const updateGameSuccess = function (response) {
-  console.log('Updated')
-  store.game = response.game
+  $('#next-player-message').text('Your X has been placed, now place O.')
+  $(store.clickedBox).text('x')
 }
 
 const updateGameFailure = function () {
-  console.log('Not updated')
+  $('#next-player-message').text('Space taken, choose a different space!')
 }
-
 module.exports = {
   signUpSuccess,
   signUpFailure,

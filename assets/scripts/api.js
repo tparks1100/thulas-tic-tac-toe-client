@@ -4,6 +4,11 @@ const config = require('./config')
 
 const store = require('./store')
 
+// const cells = ['', '', '', '', '', '', '', '', ''] {
+//   index:
+// }
+// let over = false
+
 const signUp = function (formData) {
   return $.ajax({
     url: config.apiUrl + '/sign-up',
@@ -51,26 +56,25 @@ const createGame = function (formData) {
     }
   })
 }
-
-const updateGame = function (formData) {
+const updateGame = function (index, value) {
   return $.ajax({
     headers: {
-      Authorization: 'Bearer ' + store.game.token
+      // ui sign in success function
+      Authorization: 'Bearer ' + store.user.token
     },
-    url: config.apiUrl + '/games/' + formData,
+    url: config.apiUrl + '/games/' + store.game._id,
     method: 'PATCH',
     data: {
       game: {
         cell: {
-          index: 0,
-          value: 'x'
+          index: index,
+          value: value
         },
         over: false
       }
     }
   })
 }
-
 module.exports = {
   signUp,
   signIn,

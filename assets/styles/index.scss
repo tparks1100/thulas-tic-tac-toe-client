@@ -23,16 +23,21 @@ div {
 
 button {
   background-color: #6886c5;
-  color: white;
+  color: #ffffff;
 }
 
 td {
-  border: 3px solid black;
+  border: 5px solid #ffffff;
+  // border-left: 0;
+  // border-top: 0;
+  color: #ff9a76;
+  font-size: 100px;
   height: 140px;
+  text-align: center;
   width: 140px;
 }
 
-.container {
+.board {
   align-items: center;
   background: #c7b198;
   display: flex;
@@ -46,4 +51,14 @@ td {
   font-family: Arial, Helvetica, sans-serif;
   margin: 10;
   padding: 10;
+}
+
+p {
+  color: #ff9a76;
+  font-size: 40px;
+}
+
+label {
+  font-size: 30px;
+  color: #ff9a76;
 }

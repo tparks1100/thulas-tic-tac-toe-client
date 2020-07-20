@@ -61,13 +61,21 @@ const onCreateGame = function (event) {
     .catch(ui.createGameFailure)
 }
 
-const onUpdateGame = function (event) {
-  event.preventDefault()
-  console.log(event)
+// let isActive = true
+// let player = 'X'
 
-  const formData = store.game._id
+const onUpdateGame = function (clickedCellEvent) {
+  console.log(clickedCellEvent)
+  const clickedCell = clickedCellEvent.target
+  const index = $(clickedCell).data('cell-index')
+  store.clickedBox = clickedCellEvent.target
 
-  api.updateGame(formData)
+  const value = $(clickedCell).text('X')
+
+  console.log(index)
+  console.log(value)
+
+  api.updateGame(index, value)
     .then(ui.updateGameSuccess)
     .catch(ui.updateGameFailure)
 }
