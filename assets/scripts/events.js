@@ -55,7 +55,7 @@ const onCreateGame = function (event) {
 
   const form = event.target
   const formData = getFormFields(form)
-  store.player = 'X'
+  store.player = 'X' || 'O'
 
   api.createGame(formData)
     .then(ui.createGameSuccess)
@@ -78,6 +78,14 @@ const onUpdateGame = function (clickedCellEvent) {
       .then()
       .catch()
     turn = !turn
+  }
+  const isOccupied = clickedCellEvent.target
+  if (isOccupied === 'X') {
+    return ($('#next-player-message').text('Choose an empty space!'))
+  } else if (isOccupied === 'O') {
+    return ($('#next-player-message').text('Choose an empty space!'))
+  } else {
+    return ($('#next-player-message').text('Next player move'))
   }
 }
 
