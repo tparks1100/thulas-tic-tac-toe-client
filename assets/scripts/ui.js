@@ -1,7 +1,6 @@
 'use strict'
 
 const store = require('./store')
-const scriptsEvents = require('./events')
 
 const signUpSuccess = function () {
   $('#message').text('Successfully signed up!')
@@ -45,7 +44,7 @@ const signOutFailure = function () {
 }
 
 const createGameSuccess = function (response) {
-  $('#message').text('New game has started! Choose your first space!')
+  $('#player-message').text('New game has started! Choose your first space!')
   console.log(response)
   store.game = response.game
   console.log('store: ', store)
@@ -53,19 +52,51 @@ const createGameSuccess = function (response) {
 }
 
 const createGameFailure = function () {
-  $('#message').text('New game was not started. Try again!')
+  $('#player-message').text('New game was not started. Try again!')
 }
 
+let turn = true
+store.player = 'X'
+
 const updateGameSuccess = function (response) {
-  $('#next-player-message').text('Choose a space')
   store.game = response.game
   console.log('store: ', store)
   console.log('token: ', store.user.token)
+  $(store.clickedBox).text(store.player)
+  const player = turn ? 'O' : 'X'
+  console.log(player)
+  // store.clickedBox.innerText = player
+  turn = !turn
+  store.player = player
+  $('#player-message').text('Player ' + store.player)
+  // Can't use triple equal signs on more than two things, can combine statements
+  const chooseWinner = function () {
+    if (response.game.cells[0] !== '' && response.game.cells[0] === response.game.cells[1] && response.game.cells[0] === response.game.cells[2]) {
+      ($('#player-message').text('Player ' + response.game.cells[0] + ' wins!'))
+    } else if (response.game.cells[3] !== '' && response.game.cells[3] === response.game.cells[4] && response.game.cells[3] === response.game.cells[5]) {
+      ($('#player-message').text('Player ' + response.game.cells[3] + ' wins!'))
+    } else if (response.game.cells[6] !== '' && response.game.cells[6] === response.game.cells[7] && response.game.cells[6] === response.game.cells[8]) {
+      ($('#player-message').text('Player ' + response.game.cells[6] + ' wins!'))
+    } else if (response.game.cells[0] !== '' && response.game.cells[0] === response.game.cells[3] && response.game.cells[0] === response.game.cells[6]) {
+      ($('#player-message').text('Player ' + response.game.cells[0] + ' wins!'))
+    } else if (response.game.cells[1] !== '' && response.game.cells[1] === response.game.cells[4] && response.game.cells[1] === response.game.cells[7]) {
+      ($('#player-message').text('Player ' + response.game.cells[1] + ' wins!'))
+    } else if (response.game.cells[2] !== '' && response.game.cells[2] === response.game.cells[5] && response.game.cells[2] === response.game.cells[8]) {
+      ($('#player-message').text('Player ' + response.game.cells[2] + ' wins!'))
+    } else if (response.game.cells[0] !== '' && response.game.cells[0] === response.game.cells[4] && response.game.cells[0] === response.game.cells[8]) {
+      ($('#player-message').text('Player ' + response.game.cells[0] + ' wins!'))
+    } else if (response.game.cells[2] !== '' && response.game.cells[2] === response.game.cells[4] && response.game.cells[2] === response.game.cells[6]) {
+      ($('#player-message').text('Player ' + response.game.cells[2] + ' wins!'))
+    }
+  }
+  if (chooseWinner !== 'true') {
+    ($('#player-message').text('No one wins, it is a draw!'))
+  }
+}
+const updateGameFailure = function () {
+  $('#player-message').text('Please choose an empty space!')
 }
 
-const updateGameFailure = function () {
-  $('#next-player-message').text('Please choose an empty space!')
-}
 module.exports = {
   signUpSuccess,
   signUpFailure,

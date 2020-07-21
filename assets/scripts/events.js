@@ -61,37 +61,39 @@ const onCreateGame = function (event) {
     .catch(ui.createGameFailure)
 }
 
-let turn = true
-
 const onUpdateGame = function (clickedCellEvent) {
   // console.log(clickedCellEvent)
   const clickedCell = clickedCellEvent.target
   const index = $(clickedCell).data('cell-index')
-  // store.clickedBox = clickedCellEvent.target
+  // creating a key on store object and storing event value as an object
+  store.clickedBox = clickedCellEvent.target
   console.log(index)
-
-  const player = turn ? 'X' : 'O'
-  console.log(player)
   if (clickedCellEvent.target.innerText === '') {
-    clickedCellEvent.target.innerText = player
-    api.updateGame(index, player, false)
+    api.updateGame(index, store.player)
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFailure)
-    turn = !turn
-    store.player = player
   }
-
-// const winCombos = [
-//   [0, 1, 2],
-//   [3, 4, 5],
-//   [6, 7, 8],
-//   [0, 3, 6],
-//   [1, 4, 7],
-//   [2, 5, 8],
-//   [0, 4, 8],
-//   [6, 4, 2]
-// ]
+//   const winner = function () {
+// if (store.game.cells[0] === store.game.cells[1] && store.game.cells[2]) {
+//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
+// } else if (store.game.cells[3] === store.game.cells[4] && store.game.cells[5]) {
+//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
+// } else if (store.game.cells[6] === store.game.cells[7] && store.game.cells[8]) {
+//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
+// } else if (store.game.cells[0] === store.game.cells[4] && store.game.cells[8]) {
+//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
+// } else if (store.game.cells[2] === store.game.cells[4] && store.game.cells[6]) {
+//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
+// } else if (store.game.cells[0] === store.game.cells[3] && store.game.cells[6]) {
+//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
+// } else if (store.game.cells[1] === store.game.cells[4] && store.game.cells[7]) {
+//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
+// } else if (store.game.cells[2] === store.game.cells[5] && store.game.cells[8]) {
+//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
+//     }
+//   }
 }
+
 module.exports = {
   onSignUp,
   onSignIn,
