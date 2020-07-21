@@ -55,7 +55,6 @@ const onCreateGame = function (event) {
 
   const form = event.target
   const formData = getFormFields(form)
-  store.player = 'X' || 'O'
 
   api.createGame(formData)
     .then(ui.createGameSuccess)
@@ -65,28 +64,32 @@ const onCreateGame = function (event) {
 let turn = true
 
 const onUpdateGame = function (clickedCellEvent) {
-  console.log(clickedCellEvent)
+  // console.log(clickedCellEvent)
   const clickedCell = clickedCellEvent.target
   const index = $(clickedCell).data('cell-index')
-  store.clickedBox = clickedCellEvent.target
+  // store.clickedBox = clickedCellEvent.target
   console.log(index)
 
   const player = turn ? 'X' : 'O'
   if (clickedCellEvent.target.innerText === '') {
     clickedCellEvent.target.innerText = player
     api.updateGame(index, player, false)
-      .then()
-      .catch()
+      .then(ui.updateGameSuccess)
+      .catch(ui.updateGameFailure)
     turn = !turn
   }
-  const isOccupied = clickedCellEvent.target
-  if (isOccupied === 'X') {
-    return ($('#next-player-message').text('Choose an empty space!'))
-  } else if (isOccupied === 'O') {
-    return ($('#next-player-message').text('Choose an empty space!'))
-  } else {
-    return ($('#next-player-message').text('Next player move'))
-  }
+  store.player = onUpdateGame.player
+
+  // const winCombos = [
+  //   [0, 1, 2],
+  //   [3, 4, 5],
+  //   [6, 7, 8],
+  //   [0, 3, 6],
+  //   [1, 4, 7],
+  //   [2, 5, 8],
+  //   [0, 4, 8],
+  //   [6, 4, 2]
+  // ]
 }
 
 module.exports = {

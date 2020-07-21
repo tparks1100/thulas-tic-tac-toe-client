@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('./store')
+const scriptsEvents = require('./events')
 
 const signUpSuccess = function () {
   $('#message').text('Successfully signed up!')
@@ -55,14 +56,17 @@ const createGameFailure = function () {
   $('#message').text('New game was not started. Try again!')
 }
 
-// const updateGameSuccess = function (response) {
-//   $('#next-player-message').text('Player O')
-//   // $(store.clickedBox).text('X')
-// }
-//
-// const updateGameFailure = function () {
-//   $('#next-player-message').text('Space taken, choose a different space!')
-// }
+const updateGameSuccess = function (response) {
+  $('#next-player-message').text('Choose a space')
+  console.log(response)
+  store.player = response.player
+  console.log('store: ', store)
+  console.log('token: ', store.user.token)
+}
+
+const updateGameFailure = function () {
+  $('#next-player-message').text('Please choose an empty space!')
+}
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -73,7 +77,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   createGameSuccess,
-  createGameFailure
-  // updateGameSuccess,
-  // updateGameFailure
+  createGameFailure,
+  updateGameSuccess,
+  updateGameFailure
 }

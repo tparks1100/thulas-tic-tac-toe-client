@@ -4,6 +4,8 @@ const config = require('./config')
 
 const store = require('./store')
 
+// const scriptsEvents = require('./events')
+
 const signUp = function (formData) {
   return $.ajax({
     url: config.apiUrl + '/sign-up',
@@ -62,8 +64,8 @@ const updateGame = function (index, value) {
     data: {
       game: {
         cell: {
-          index: index,
-          value: store.value
+          index: 0,
+          value: 'X'
         },
         over: false
       }
