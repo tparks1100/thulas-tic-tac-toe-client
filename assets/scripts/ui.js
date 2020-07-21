@@ -58,8 +58,7 @@ const createGameFailure = function () {
 
 const updateGameSuccess = function (response) {
   $('#next-player-message').text('Choose a space')
-  console.log(response)
-  store.player = response.player
+  store.game = response.game
   console.log('store: ', store)
   console.log('token: ', store.user.token)
 }

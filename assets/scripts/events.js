@@ -71,27 +71,27 @@ const onUpdateGame = function (clickedCellEvent) {
   console.log(index)
 
   const player = turn ? 'X' : 'O'
+  console.log(player)
   if (clickedCellEvent.target.innerText === '') {
     clickedCellEvent.target.innerText = player
     api.updateGame(index, player, false)
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFailure)
     turn = !turn
+    store.player = player
   }
-  store.player = onUpdateGame.player
 
-  // const winCombos = [
-  //   [0, 1, 2],
-  //   [3, 4, 5],
-  //   [6, 7, 8],
-  //   [0, 3, 6],
-  //   [1, 4, 7],
-  //   [2, 5, 8],
-  //   [0, 4, 8],
-  //   [6, 4, 2]
-  // ]
+// const winCombos = [
+//   [0, 1, 2],
+//   [3, 4, 5],
+//   [6, 7, 8],
+//   [0, 3, 6],
+//   [1, 4, 7],
+//   [2, 5, 8],
+//   [0, 4, 8],
+//   [6, 4, 2]
+// ]
 }
-
 module.exports = {
   onSignUp,
   onSignIn,

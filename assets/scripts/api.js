@@ -53,7 +53,7 @@ const createGame = function (formData) {
     }
   })
 }
-const updateGame = function (index, value) {
+const updateGame = function (index, player) {
   return $.ajax({
     headers: {
       // ui sign in success function
@@ -64,8 +64,8 @@ const updateGame = function (index, value) {
     data: {
       game: {
         cell: {
-          index: 0,
-          value: 'X'
+          index: index,
+          value: player
         },
         over: false
       }
