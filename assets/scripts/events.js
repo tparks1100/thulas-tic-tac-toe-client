@@ -65,33 +65,15 @@ const onUpdateGame = function (clickedCellEvent) {
   // console.log(clickedCellEvent)
   const clickedCell = clickedCellEvent.target
   const index = $(clickedCell).data('cell-index')
+  store.index = index
   // creating a key on store object and storing event value as an object
   store.clickedBox = clickedCellEvent.target
-  console.log(index)
+  // console.log(index)
   if (clickedCellEvent.target.innerText === '') {
     api.updateGame(index, store.player)
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFailure)
   }
-//   const winner = function () {
-// if (store.game.cells[0] === store.game.cells[1] && store.game.cells[2]) {
-//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
-// } else if (store.game.cells[3] === store.game.cells[4] && store.game.cells[5]) {
-//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
-// } else if (store.game.cells[6] === store.game.cells[7] && store.game.cells[8]) {
-//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
-// } else if (store.game.cells[0] === store.game.cells[4] && store.game.cells[8]) {
-//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
-// } else if (store.game.cells[2] === store.game.cells[4] && store.game.cells[6]) {
-//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
-// } else if (store.game.cells[0] === store.game.cells[3] && store.game.cells[6]) {
-//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
-// } else if (store.game.cells[1] === store.game.cells[4] && store.game.cells[7]) {
-//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
-// } else if (store.game.cells[2] === store.game.cells[5] && store.game.cells[8]) {
-//       return ($('#player-message').text(store.game.cells._v + ' has won!'))
-//     }
-//   }
 }
 
 module.exports = {

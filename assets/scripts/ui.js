@@ -12,10 +12,10 @@ const signUpFailure = function () {
 
 const signInSuccess = function (response) {
   $('#message').text('Successfully signed in!')
-  console.log(store)
+  // console.log(store)
   store.user = response.user
-  console.log('store: ', store)
-  console.log('token: ', store.user.token)
+  // console.log('store: ', store)
+  // console.log('token: ', store.user.token)
 
   $('.authenticated').show()
   $('.unauthenticated').hide()
@@ -45,10 +45,10 @@ const signOutFailure = function () {
 
 const createGameSuccess = function (response) {
   $('#player-message').text('New game has started! Choose your first space!')
-  console.log(response)
+  // console.log(response)
   store.game = response.game
-  console.log('store: ', store)
-  console.log('token: ', store.user.token)
+  // console.log('store: ', store)
+  // console.log('token: ', store.user.token)
 }
 
 const createGameFailure = function () {
@@ -56,42 +56,43 @@ const createGameFailure = function () {
 }
 
 let turn = true
+// Player starts at X
 store.player = 'X'
 
 const updateGameSuccess = function (response) {
   store.game = response.game
-  console.log('store: ', store)
-  console.log('token: ', store.user.token)
+  // console.log('store: ', store)
+  // console.log('token: ', store.user.token)
   $(store.clickedBox).text(store.player)
   const player = turn ? 'O' : 'X'
-  console.log(player)
+  // console.log(player)
   // store.clickedBox.innerText = player
   turn = !turn
   store.player = player
   $('#player-message').text('Player ' + store.player)
   // Can't use triple equal signs on more than two things, can combine statements
-  const chooseWinner = function () {
-    if (response.game.cells[0] !== '' && response.game.cells[0] === response.game.cells[1] && response.game.cells[0] === response.game.cells[2]) {
-      ($('#player-message').text('Player ' + response.game.cells[0] + ' wins!'))
-    } else if (response.game.cells[3] !== '' && response.game.cells[3] === response.game.cells[4] && response.game.cells[3] === response.game.cells[5]) {
-      ($('#player-message').text('Player ' + response.game.cells[3] + ' wins!'))
-    } else if (response.game.cells[6] !== '' && response.game.cells[6] === response.game.cells[7] && response.game.cells[6] === response.game.cells[8]) {
-      ($('#player-message').text('Player ' + response.game.cells[6] + ' wins!'))
-    } else if (response.game.cells[0] !== '' && response.game.cells[0] === response.game.cells[3] && response.game.cells[0] === response.game.cells[6]) {
-      ($('#player-message').text('Player ' + response.game.cells[0] + ' wins!'))
-    } else if (response.game.cells[1] !== '' && response.game.cells[1] === response.game.cells[4] && response.game.cells[1] === response.game.cells[7]) {
-      ($('#player-message').text('Player ' + response.game.cells[1] + ' wins!'))
-    } else if (response.game.cells[2] !== '' && response.game.cells[2] === response.game.cells[5] && response.game.cells[2] === response.game.cells[8]) {
-      ($('#player-message').text('Player ' + response.game.cells[2] + ' wins!'))
-    } else if (response.game.cells[0] !== '' && response.game.cells[0] === response.game.cells[4] && response.game.cells[0] === response.game.cells[8]) {
-      ($('#player-message').text('Player ' + response.game.cells[0] + ' wins!'))
-    } else if (response.game.cells[2] !== '' && response.game.cells[2] === response.game.cells[4] && response.game.cells[2] === response.game.cells[6]) {
-      ($('#player-message').text('Player ' + response.game.cells[2] + ' wins!'))
-    }
+  if (response.game.cells[0] !== '' && response.game.cells[0] === response.game.cells[1] && response.game.cells[0] === response.game.cells[2]) {
+    ($('#player-message').text('Player ' + response.game.cells[0] + ' wins!'))
+  } else if (response.game.cells[3] !== '' && response.game.cells[3] === response.game.cells[4] && response.game.cells[3] === response.game.cells[5]) {
+    ($('#player-message').text('Player ' + response.game.cells[3] + ' wins!'))
+  } else if (response.game.cells[6] !== '' && response.game.cells[6] === response.game.cells[7] && response.game.cells[6] === response.game.cells[8]) {
+    ($('#player-message').text('Player ' + response.game.cells[6] + ' wins!'))
+  } else if (response.game.cells[0] !== '' && response.game.cells[0] === response.game.cells[3] && response.game.cells[0] === response.game.cells[6]) {
+    ($('#player-message').text('Player ' + response.game.cells[0] + ' wins!'))
+  } else if (response.game.cells[1] !== '' && response.game.cells[1] === response.game.cells[4] && response.game.cells[1] === response.game.cells[7]) {
+    ($('#player-message').text('Player ' + response.game.cells[1] + ' wins!'))
+  } else if (response.game.cells[2] !== '' && response.game.cells[2] === response.game.cells[5] && response.game.cells[2] === response.game.cells[8]) {
+    ($('#player-message').text('Player ' + response.game.cells[2] + ' wins!'))
+  } else if (response.game.cells[0] !== '' && response.game.cells[0] === response.game.cells[4] && response.game.cells[0] === response.game.cells[8]) {
+    ($('#player-message').text('Player ' + response.game.cells[0] + ' wins!'))
+  } else if (response.game.cells[2] !== '' && response.game.cells[2] === response.game.cells[4] && response.game.cells[2] === response.game.cells[6]) {
+    ($('#player-message').text('Player ' + response.game.cells[2] + ' wins!'))
   }
-  if (chooseWinner !== 'true') {
-    ($('#player-message').text('No one wins, it is a draw!'))
-  }
+  // tried to use this to start a new game, but it just refreshes the page forcing the user to sign out and sign in again
+  $('#create-game').off('submit')
+  // else if (response.game.cells.every(store.clickedBox, '')) {
+  //   ($('#player-message').text('No winner!'))
+  // }
 }
 const updateGameFailure = function () {
   $('#player-message').text('Please choose an empty space!')
