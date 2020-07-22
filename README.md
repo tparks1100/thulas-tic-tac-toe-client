@@ -5,6 +5,7 @@ This application allows a user to test their tic tac toe skills against himself/
 ## Important Links
 
 - [Requirements Checklist](https://docs.google.com/document/d/1FrPyD1XduGM2eoMzyuIYzYBNJNsbJRIPKuyCQcLov4c/edit?usp=sharing)
+- [Deployed Client](https://tparks1100.github.io/thulas-tic-tac-toe-client/)
 
 ## Planning Story
 
