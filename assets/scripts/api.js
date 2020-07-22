@@ -4,6 +4,8 @@ const config = require('./config')
 
 const store = require('./store')
 
+// const scriptsEvents = require('./events')
+
 const signUp = function (formData) {
   return $.ajax({
     url: config.apiUrl + '/sign-up',
@@ -41,9 +43,40 @@ const signOut = function () {
   })
 }
 
+const createGame = function (formData) {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    data: formData,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+const updateGame = function (index, player) {
+  return $.ajax({
+    headers: {
+      // ui sign in success function
+      Authorization: 'Bearer ' + store.user.token
+    },
+    url: config.apiUrl + '/games/' + store.game._id,
+    method: 'PATCH',
+    data: {
+      game: {
+        cell: {
+          index: index,
+          value: player
+        },
+        over: false
+      }
+    }
+  })
+}
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  createGame,
+  updateGame
 }
