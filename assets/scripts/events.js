@@ -73,6 +73,8 @@ const onUpdateGame = function (clickedCellEvent) {
     api.updateGame(index, store.player)
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFailure)
+  } else {
+    $('#player-message').text('Uh oh! Please choose an empty space!')
   }
 }
 
