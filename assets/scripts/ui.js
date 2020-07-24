@@ -97,11 +97,6 @@ const wins = function () {
   }
   }
 }
-// tried to use this to start a new game, but it just refreshes the page forcing the user to sign out and sign in again
-// else if (response.game.cells.every(store.clickedBox, '')) {
-//   ($('#player-message').text('No winner!'))
-// }
-// $('#create-game').off('click', location.reload(false))
 
 // const updateGameFailure = function (response) {
 //   store.game = response.game

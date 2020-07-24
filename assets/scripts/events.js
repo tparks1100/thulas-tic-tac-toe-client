@@ -76,6 +76,11 @@ const onUpdateGame = function (clickedCellEvent) {
   } else {
     $('#player-message').text('Uh oh! Please choose an empty space!')
   }
+  function clearBoard () {
+    $('#create-game').on('click')
+    $(store.index).remove()
+  }
+  clearBoard()
 }
 
 module.exports = {
