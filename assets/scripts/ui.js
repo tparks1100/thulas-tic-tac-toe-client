@@ -47,6 +47,7 @@ const createGameSuccess = function (response) {
   $('#player-message').text('New game has started! Choose your first space!')
   // console.log(response)
   store.game = response.game
+  console.log(store.game)
   // console.log('store: ', store)
   // console.log('token: ', store.user.token)
 }
@@ -66,8 +67,7 @@ const updateGameSuccess = function (response) {
   // console.log('token: ', store.user.token)
   $(store.clickedBox).text(store.player)
   const player = turn ? 'O' : 'X'
-  // console.log(player)
-  // store.clickedBox.innerText = player
+  console.log(player)
   turn = !turn
   store.player = player
   $('#player-message').text('Player ' + store.player)
@@ -78,22 +78,49 @@ const updateGameSuccess = function (response) {
 const wins = function () {
   if (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[1] && store.game.cells[0] === store.game.cells[2]) {
     ($('#player-message').text('Player ' + store.game.cells[0] + ' wins!'))
+    turn = true
+    store.player = 'X'
+    store.game.over = true
   } else if (store.game.cells[3] !== '' && store.game.cells[3] === store.game.cells[4] && store.game.cells[3] === store.game.cells[5]) {
     ($('#player-message').text('Player ' + store.game.cells[3] + ' wins!'))
+    turn = true
+    store.player = 'X'
+    store.game.over = true
   } else if (store.game.cells[6] !== '' && store.game.cells[6] === store.game.cells[7] && store.game.cells[6] === store.game.cells[8]) {
     ($('#player-message').text('Player ' + store.game.cells[6] + ' wins!'))
+    turn = true
+    store.player = 'X'
+    store.game.over = true
   } else if (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[3] && store.game.cells[0] === store.game.cells[6]) {
     ($('#player-message').text('Player ' + store.game.cells[0] + ' wins!'))
+    turn = true
+    store.player = 'X'
+    store.game.over = true
   } else if (store.game.cells[1] !== '' && store.game.cells[1] === store.game.cells[4] && store.game.cells[1] === store.game.cells[7]) {
     ($('#player-message').text('Player ' + store.game.cells[1] + ' wins!'))
+    turn = true
+    store.player = 'X'
+    store.game.over = true
   } else if (store.game.cells[2] !== '' && store.game.cells[2] === store.game.cells[5] && store.game.cells[2] === store.game.cells[8]) {
     ($('#player-message').text('Player ' + store.game.cells[2] + ' wins!'))
+    turn = true
+    store.player = 'X'
+    store.game.over = true
   } else if (store.game.cells[0] !== '' && store.game.cells[0] === store.game.cells[4] && store.game.cells[0] === store.game.cells[8]) {
     ($('#player-message').text('Player ' + store.game.cells[0] + ' wins!'))
+    turn = true
+    store.player = 'X'
+    store.game.over = true
   } else if (store.game.cells[2] !== '' && store.game.cells[2] === store.game.cells[4] && store.game.cells[2] === store.game.cells[6]) {
     ($('#player-message').text('Player ' + store.game.cells[2] + ' wins!'))
+    turn = true
+    store.player = 'X'
+    store.game.over = true
   } else { if (store.game.cells.indexOf('') === -1) {
     $('#player-message').text('It\'s a tie!')
+    turn = true
+    store.player = 'X'
+    store.game.over = true
   }
   }
 }

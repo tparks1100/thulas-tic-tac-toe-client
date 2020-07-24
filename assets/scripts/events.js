@@ -59,6 +59,13 @@ const onCreateGame = function (event) {
   api.createGame(formData)
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
+  clearBoard()
+}
+
+const clearBoard = function () {
+  console.log('clearBoard')
+  $('.box').text('')
+  $(store.index).remove()
 }
 
 const onUpdateGame = function (clickedCellEvent) {
@@ -69,18 +76,15 @@ const onUpdateGame = function (clickedCellEvent) {
   // creating a key on store object and storing event value as an object
   store.clickedBox = clickedCellEvent.target
   // console.log(index)
-  if (clickedCellEvent.target.innerText === '') {
+  if (store.game.over === true) {
+    $('#player-message').text('Game over, start a new game!')
+  } else if (clickedCellEvent.target.innerText === '') {
     api.updateGame(index, store.player)
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFailure)
   } else {
     $('#player-message').text('Uh oh! Please choose an empty space!')
   }
-  function clearBoard () {
-    $('#create-game').on('click')
-    $(store.index).remove()
-  }
-  clearBoard()
 }
 
 module.exports = {
