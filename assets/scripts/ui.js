@@ -4,6 +4,7 @@ const store = require('./store')
 
 const signUpSuccess = function () {
   $('#message').text('Successfully signed up!')
+  $('#sign-up')[0].reset()
 }
 
 const signUpFailure = function () {
@@ -19,6 +20,8 @@ const signInSuccess = function (response) {
 
   $('.authenticated').show()
   $('.unauthenticated').hide()
+  $('.board').hide()
+  $('#sign-in')[0].reset()
 }
 
 const signInFailure = function () {
@@ -27,6 +30,7 @@ const signInFailure = function () {
 
 const changePasswordSuccess = function () {
   $('#message').text('You successfully changed your password!')
+  $('#change-password')[0].reset()
 }
 
 const changePasswordFailure = function () {
@@ -37,6 +41,7 @@ const signOutSuccess = function () {
   $('#message').text('Signed you out!')
   $('.unauthenticated').show()
   $('.authenticated').hide()
+  $('#player-message').hide()
 }
 
 const signOutFailure = function () {
@@ -50,6 +55,8 @@ const createGameSuccess = function (response) {
   console.log(store.game)
   // console.log('store: ', store)
   // console.log('token: ', store.user.token)
+  $('.board').show()
+  $('#player-message').show()
 }
 
 const createGameFailure = function () {
@@ -63,8 +70,8 @@ store.player = 'X'
 
 const updateGameSuccess = function (response) {
   store.game = response.game
-  // console.log('store: ', store)
-  // console.log('token: ', store.user.token)
+  console.log('store: ', store)
+  console.log('token: ', store.user.token)
   $(store.clickedBox).text(store.player)
   const player = turn ? 'O' : 'X'
   console.log(player)
