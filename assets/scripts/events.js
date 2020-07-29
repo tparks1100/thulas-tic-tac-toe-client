@@ -87,11 +87,20 @@ const onUpdateGame = function (clickedCellEvent) {
   }
 }
 
+const onGetGame = function () {
+event.preventDefault()
+
+api.getGame()
+  .then(ui.getGameSuccess)
+  .catch(ui.getGameFailure)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
   onSignOut,
   onCreateGame,
-  onUpdateGame
+  onUpdateGame,
+  onGetGame
 }

@@ -42,6 +42,7 @@ const signOutSuccess = function () {
   $('.unauthenticated').show()
   $('.authenticated').hide()
   $('#player-message').hide()
+  $('.games-played').hide()
 }
 
 const signOutFailure = function () {
@@ -57,6 +58,7 @@ const createGameSuccess = function (response) {
   // console.log('token: ', store.user.token)
   $('.board').show()
   $('#player-message').show()
+  $('.games-played').hide()
 }
 
 const createGameFailure = function () {
@@ -78,6 +80,7 @@ const updateGameSuccess = function (response) {
   turn = !turn
   store.player = player
   $('#player-message').text('Player ' + store.player)
+  $('.games-played').hide()
 
   let winner = wins()
   // Can't use triple equal signs on more than two things, can combine statements
@@ -141,6 +144,17 @@ const wins = function () {
 //   }
 // }
 
+const getGameSuccess = function (response) {
+  console.log('This is success button', response)
+  console.log(response.games.length)
+  $('.games-played').text(response.games.length)
+  $('.games-played').show()
+}
+
+const getGameFailure = function () {
+  $('.games-played').text('Failed to load games')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -152,6 +166,8 @@ module.exports = {
   signOutFailure,
   createGameSuccess,
   createGameFailure,
-  updateGameSuccess
+  updateGameSuccess,
+  getGameSuccess,
+  getGameFailure
   // updateGameFailure
 }
