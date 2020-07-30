@@ -54,7 +54,7 @@ const createGameSuccess = function (response) {
   $('#player-message').text('New game has started! Choose your first space!')
   // console.log(response)
   store.game = response.game
-  console.log(store.game)
+  // console.log(store.game)
   // console.log('store: ', store)
   // console.log('token: ', store.user.token)
   $('.board').show()
@@ -73,11 +73,11 @@ store.player = 'X'
 
 const updateGameSuccess = function (response) {
   store.game = response.game
-  console.log('store: ', store)
-  console.log('token: ', store.user.token)
+  // console.log('store: ', store)
+  // console.log('token: ', store.user.token)
   $(store.clickedBox).text(store.player)
   const player = turn ? 'O' : 'X'
-  console.log(player)
+  // console.log(player)
   turn = !turn
   store.player = player
   $('#player-message').text('Player ' + store.player)
@@ -146,8 +146,8 @@ const wins = function () {
 // }
 
 const getGameSuccess = function (response) {
-  console.log('This is success button', response)
-  console.log(response.games.length)
+  // console.log('This is success button', response)
+  // console.log(response.games.length)
   $('.games-played').text(response.games.length)
   $('.games-played').show()
 }

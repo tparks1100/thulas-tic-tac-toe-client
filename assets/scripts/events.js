@@ -63,7 +63,7 @@ const onCreateGame = function (event) {
 }
 
 const clearBoard = function () {
-  console.log('clearBoard')
+  // console.log('clearBoard')
   $('.box').text('')
   $(store.index).remove()
 }
@@ -91,8 +91,8 @@ const onGetGame = function () {
 event.preventDefault()
 
 api.getGame()
-  .then(ui.getGameSuccess)
-  .catch(ui.getGameFailure)
+    .then(ui.getGameSuccess)
+    .catch(ui.getGameFailure)
 }
 
 module.exports = {
