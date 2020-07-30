@@ -21,4 +21,5 @@ $(() => {
   // Game Portion:
   $('#create-game').on('submit', scriptsEvents.onCreateGame)
   $('.box').on('click', scriptsEvents.onUpdateGame)
+  $('#get-game').on('submit', scriptsEvents.onGetGame)
 })

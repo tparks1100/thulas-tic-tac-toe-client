@@ -67,8 +67,18 @@ const updateGame = function (index, player) {
           index: index,
           value: player
         },
-        over: false
+        over: store.game.over
       }
+    }
+  })
+}
+
+const getGame = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
     }
   })
 }
@@ -78,5 +88,6 @@ module.exports = {
   changePassword,
   signOut,
   createGame,
-  updateGame
+  updateGame,
+  getGame
 }
