@@ -1,6 +1,6 @@
 # Thula's Tic Tac Toe Game
 
-This application allows a user to test their tic tac toe skills against himself/herself! It's harder than it sounds!
+Play Tic Tac Toe! This is the first web application that I have built. It is hosted live on the web. I practiced separation of HTML, CSS, and JavaScript files in my application. Made use of my new programming skills to solve the game logic for this game and code an interactive game that allows a user to play tic tac toe against themself. I facilitated communication with a back-end that was built for me to store the state of my game.
 
 ## Important Links
 
